@@ -1,30 +1,6 @@
 int: nc = 5; %nombre de cases du pb
 include "alldifferent.mzn";
 
-% relations entre les nombres et les attributs :
-
-% Nationalite :
-% 1 - Anglais
-% 2 - Espagnol
-% 3 - Ukrainien
-% 4 - Norvegien
-% 5 - Japonais
-
-% Animal
-% 1 - Chien
-% 2 - Escargot
-% 3 - Renard
-% 4 - Cheval
-% 5 - Zebre (Nous le supposons)
-
-% var [anglais, espagnol, ukrainien, norvegien, japonais] : Nationalite;
-% var [eau, jus, the, cafe, lait] : Boisson;
-% var [zebre, chien, escargot, renard, cheval] : Animal;
-% var [rouge, vert, jaune, bleu, blanc] : CouleurMaison;
-% var [sculpteur, diplomate, medecin, violoniste, acrobate] : Metier
-% var array[Nationalite, Boisson, Animal, CouleurMaison, Metier] : Case
-% var array[1..nbm] of var Case : cases; % state space
-
 var 1..nc : anglais; 
 var 1..nc : espagnol;
 var 1..nc : ukrainien; 
@@ -72,6 +48,7 @@ constraint alldifferent([rouge, vert, jaune, bleu, blanc]);
 constraint alldifferent([sculpteur, diplomate, medecin, violoniste, acrobate]);
 
 solve satisfy;
-
-%output if anglais == eau then show("anglais") elseif espagnol == eau then show("espagnol") elseif ukrainien == eau then show("ukrainien") elseif norvegien == eau then show("norvegien") elseif japonais == eau then show("japonais") else " " endif;
-
+    
+output[
+  "Nationalites: \n anglais=\(anglais)\n espagnol=\(espagnol)\n ukrainien=\(ukrainien)\n norvegien=\(norvegien)\n japonais=\(japonais)\n------------ \nBoisson: \n eau=\(eau)\n------------ \nAnimal: \n zebre=\(zebre)\n"
+];
