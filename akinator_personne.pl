@@ -46,20 +46,20 @@ personne_(richard_Nixon).
 personne_(donald_trump).
 
 /********  metierS *****************/
-metier_(jennifer_Lawrence).
-metier_(hideo_Kojima).
-metier_(banksy).
-metier_(lara_Croft).
-metier_(mario).
-metier_(j_K_Rowling).
-metier_(lady_Gaga).
-metier_(quentin_Tarantino).
-metier_(fernando_Alonso).
-metier_(pape_Francois).
-metier_(james_bond).
-metier_(denzel_Washington).
-metier_(mikhail_Gorbachev).
-metier_(donald_trump).
+vivant(jennifer_Lawrence).
+vivant(hideo_Kojima).
+vivant(banksy).
+vivant(lara_Croft).
+vivant(mario).
+vivant(j_K_Rowling).
+vivant(lady_Gaga).
+vivant(quentin_Tarantino).
+vivant(fernando_Alonso).
+vivant(pape_Francois).
+vivant(james_bond).
+vivant(denzel_Washington).
+vivant(mikhail_Gorbachev).
+vivant(donald_trump).
 /************homme ****************/
 homme(michael_Jackson).
 homme(mikhail_Gorbachev).
@@ -160,14 +160,14 @@ ask(Attr, Val) :-
   asserta(known(Reponse, Attr, Val)),
   Reponse == 'oui'.
 
-personne(X) :- ask(metier,oui),((ask(homme,oui), metier(X), homme(X));(metier(X),not(homme(X)))),metier_(X).
-personne(X) :- ((ask(homme,oui), metier(X), homme(X));(metier(X),not(homme(X)))),not(metier_(X)).
+personne_(X) :- ask(vivant,oui),((ask(homme,oui), metier_(X), homme(X));(metier_(X),not(homme(X)))),vivant(X).
+personne_(X) :- ((ask(homme,oui), metier_(X), homme(X));(metier_(X),not(homme(X)))),not(vivant(X)).
 
-metier(X) :-  ask(artiste,oui),art(X).
-metier(X) :-  ask(fictif,oui),fictif_(X).
-metier(X) :-  ask(religieux,oui),confession(X,_).
-metier(X) :- ask(politicien,oui), politicien_(X).
-metier(X) :-  ask(sportif,oui),sportif(X).
+metier_(X) :-  ask(artiste,oui),art(X).
+metier_(X) :-  ask(fictif,oui),fictif_(X).
+metier_(X) :-  ask(religieux,oui),confession(X,_).
+metier_(X) :- ask(politicien,oui), politicien_(X).
+metier_(X) :-  ask(sportif,oui),sportif(X).
 
 fictif_(X) :- (ask(anglais,oui),jeux_films(X),anglais(X));( jeux_films(X),not(anglais(X))).
 jeux_films(X) :- ((ask(jeux_video,oui),(jeux_video(X)));(film(X))).
