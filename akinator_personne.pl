@@ -160,8 +160,8 @@ ask(Attr, Val) :-
   asserta(known(Reponse, Attr, Val)),
   Reponse == 'oui'.
 
-personne_(X) :- ask(vivant,oui),((ask(homme,oui), metier_(X), homme(X));(metier_(X),not(homme(X)))),vivant(X).
-personne_(X) :- ((ask(homme,oui), metier_(X), homme(X));(metier_(X),not(homme(X)))),not(vivant(X)).
+personne(X) :- ask(vivant,oui),((ask(homme,oui), metier_(X), homme(X));(metier_(X),not(homme(X)))),vivant(X).
+personne(X) :- ((ask(homme,oui), metier_(X), homme(X));(metier_(X),not(homme(X)))),not(vivant(X)).
 
 metier_(X) :-  ask(artiste,oui),art(X).
 metier_(X) :-  ask(fictif,oui),fictif_(X).
