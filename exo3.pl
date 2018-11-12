@@ -1,19 +1,5 @@
 %% BASE DE CONNAISSANCE
 
-cours(inf1600).
-cours(inf1900).
-cours(inf2205).
-cours(log1000).
-cours(inf1005C).
-cours(inf1500).
-cours(inf1010).
-cours(inf2010).
-cours(inf2705).
-cours(log2410).
-cours(log2810).
-cours(log2990).
-cours(mth1007).
-
 prerequis(inf1010,inf1005C).
 prerequis(log1000,inf1005C).
 prerequis(inf2705,inf2010).
