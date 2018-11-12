@@ -44,8 +44,9 @@ personne_(denzel_Washington).
 personne_(richard_Nixon).
 
 personne_(donald_trump).
-
-/********  metierS *****************/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/********  SUPER CLASSE: vivant *****************/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 vivant(jennifer_Lawrence).
 vivant(hideo_Kojima).
 vivant(banksy).
@@ -122,8 +123,9 @@ anglais(lara_Croft).
 /******** Sportif *******/
 sportif(ayrton_Senna).
 sportif(fernando_Alonso).
-
-%-----------------SUPER CLASSE: personnne------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-----------------personnne------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5%%
 artiste(X):- personne_(X).
 politicien(X) :- personne_(X).
 fictif(X) :- personne_(X).
@@ -144,7 +146,10 @@ confession(X,_):- religieux(X).
 fictif(X) :- jeux_video(X).
 fictif(X) :- film(X).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-------------------	QUESTIONS---------------%
 
+%% verifie si la cause known existe pour les attr et val cad si la question a ete posee ou non
 ask(Attr, Val) :-
   known(oui, Attr, Val),
   !.
@@ -153,7 +158,7 @@ ask(Attr, Val) :-
   known(_, Attr, Val),
   !,
   fail.
-
+%% poser la question si known n'existe pas deja
 ask(Attr, Val) :-
   format('Votre personnage a t-il ces attributs (~w : ~w) ? ', [Attr, Val]),
   read(Reponse),
@@ -184,4 +189,4 @@ cinema(X) :-   ask(realisateur,oui),realisateur(X).
 politicien_(X):- ask(gouverne,usa),((ask(raciste,oui), raciste(X));(gouverne(X,usa), not(raciste(X)))).
 politicien_(X):- gouverne(X,Y), pays(Y), ask(gouverne,Y).
                                                            
-religieux_(X) :-  religion(Y), ask(religion,Y), confession(X,Y).
+religieux_(X) :- religion(Y), ask(religion,Y), confession(X,Y).
