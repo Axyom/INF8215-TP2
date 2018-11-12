@@ -30,6 +30,8 @@ predicate row_diff(int: r) = alldifferent([Tableau[r, c] | c in Team]); % Valeur
 predicate col_diff(int: c) = alldifferent([Tableau[r, c] | r in Day]); % Valeurs différentes sur la colonne c
 
 % Contraintes
+constraint Tableau[1,2]= 1; %pour palier au probleme de symetrie de la table on fixe des quelques valeurs de la premiere ligne
+constraint Tableau[1,3]= 6;
 constraint forall (r in Day) (row_diff(r)); % Pas de répétition sur les lignes
 constraint forall (c in Team) (col_diff(c)); % Pas de répétition sur les colonnes
 constraint forall(i in Day, j in Team)(Tableau[i,Tableau[i,j]]= j /\ Tableau[i,j] != j); %Contrainte sur les equipes
